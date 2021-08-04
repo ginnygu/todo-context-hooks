@@ -3,14 +3,19 @@ import { TodoContext } from "../../context/context";
 
 function Todo() {
   const {
-    todoItem: { id, todo, isCompleted },
+    todoItem: { todo, isCompleted },
+    handleDone,
+    index,
+    handleDelete,
   } = useContext(TodoContext);
 
   return (
     <div>
-      <span>{todo}</span>
-      <button>Done</button>
-      <button>Delete</button>
+      <span style={{ textDecoration: isCompleted && "line-through" }}>
+        {todo}
+      </span>
+      <button onClick={() => handleDone(index)}>Done</button>
+      <button onClick={() => handleDelete(index)}>Delete</button>
     </div>
   );
 }
